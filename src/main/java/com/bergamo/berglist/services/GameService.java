@@ -3,6 +3,7 @@ package com.bergamo.berglist.services;
 import com.bergamo.berglist.dto.GameDTO;
 import com.bergamo.berglist.dto.GameMinDTO;
 import com.bergamo.berglist.entities.Game;
+import com.bergamo.berglist.projections.GameMinProjection;
 import com.bergamo.berglist.repositories.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,13 @@ public class GameService {
     @Transactional(readOnly = true)
     public List<GameMinDTO> findAll() {
         List<Game> result = gameRepository.findAll();
+        return result.stream().map(x -> new GameMinDTO(x)).toList();
+
+    }
+
+    @Transactional(readOnly = true)
+    public List<GameMinDTO> findByList(Long id) {
+        List<GameMinProjection> result = gameRepository.searchByList(id);
         return result.stream().map(x -> new GameMinDTO(x)).toList();
 
     }
