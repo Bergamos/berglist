@@ -2,7 +2,6 @@ package com.bergamo.berglist.controllers;
 
 import com.bergamo.berglist.dto.GameDTO;
 import com.bergamo.berglist.dto.GameMinDTO;
-import com.bergamo.berglist.entities.Game;
 import com.bergamo.berglist.services.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
